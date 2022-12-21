@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIG</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/estilos.css')}}">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
+     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin=""></script>
+</head>
+<body id="cuerpo">
+
+
+<div id="form">
+    <form action="{{request.patt}}" method="POST">
+        <label><b> <h2>Ingrese las coordenadas del punto:</h2></b></label> 
+        <label><b>Nombre:</b></label> <input type="tex" class="form-control">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label><b>Latitud:</b></label> <input type="tex" class="form-control">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label><b>Longitud:</b></label> <input type="tex" class="form-control">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        
+        <button type="button">Localizar </button>
+    </form>
+</div> 
+<div id="map">
+</div> 
+</body>
+<script>
+
+    var map = L.map('map').setView([4.6281, -74.0654], 11)
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    
+}).addTo(map);
+var marker = L.marker([4.6281045, -74.0654527]).addTo(map);
+</script>    
+</html>
